@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct iOSTechTestApp: App {
+    let persistanceManager = PersistenceManager.shared
+
     var body: some Scene {
         WindowGroup {
             BookListView()
+                .environment(\.managedObjectContext, persistanceManager.context)
         }
     }
 }
