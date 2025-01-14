@@ -115,4 +115,16 @@ final class PersistenceManager {
             print("Failed to delete expired cache: \(error)")
         }
     }
+
+    func deleteAllCache() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(batchDeleteRequest)
+            saveContext()
+        } catch {
+            print("Failed to delete all cache: \(error)")
+        }
+    }
 }

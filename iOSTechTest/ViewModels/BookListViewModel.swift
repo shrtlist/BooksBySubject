@@ -16,13 +16,17 @@ final class BookListViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     // MARK: - Properties
+    private let limit: Int = 20
     private var currentPage: Int = 0
     private var hasMorePages: Bool = true
     private var searchQuery: String = ""
     private var cancellables = Set<AnyCancellable>()
+    private let networkingService: NetworkingServiceProtocol
 
     // MARK: - Initialization
-    init() {
+
+    init(networkingService: NetworkingServiceProtocol = NetworkingService.shared) {
+        self.networkingService = networkingService
         deleteExpiredCache()
     }
 
@@ -37,7 +41,7 @@ final class BookListViewModel: ObservableObject {
         }
 
         // Fetch books from cache if offline
-        if !NetworkingService.shared.isConnectedToNetwork() {
+        if !networkingService.isConnectedToNetwork() {
             loadCachedBooks(for: subject)
             return
         }
@@ -45,7 +49,7 @@ final class BookListViewModel: ObservableObject {
         isLoading = true
 
         do {
-            bookItems = try await NetworkingService.shared.searchBySubject(subject, page: currentPage)
+            bookItems = try await networkingService.searchBySubject(subject, page: currentPage, limit: limit)
             PersistenceManager.shared.saveBooks(bookItems, subject: subject)
 
             isLoading = false
@@ -61,7 +65,7 @@ final class BookListViewModel: ObservableObject {
         var bookInfo: BookInfo?
 
         // Fetch book from cache if offline
-        if !NetworkingService.shared.isConnectedToNetwork() {
+        if !networkingService.isConnectedToNetwork() {
             if let cachedBook = PersistenceManager.shared.fetchBookDetails(bookId: bookItem.key) {
                 bookInfo = BookInfo(
                     key: bookItem.key,
@@ -77,7 +81,7 @@ final class BookListViewModel: ObservableObject {
             isLoading = true
 
             do {
-                let fetchedBookInfo = try await NetworkingService.shared.getBookInfo(bookItem: bookItem)
+                let fetchedBookInfo = try await networkingService.getBookInfo(bookItem: bookItem)
                 bookInfo = fetchedBookInfo
 
                 PersistenceManager.shared.saveBookInfo(fetchedBookInfo)

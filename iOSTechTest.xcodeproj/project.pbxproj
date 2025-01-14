@@ -22,6 +22,8 @@
 		1C6934972D347370001D42D9 /* RowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6934962D34736B001D42D9 /* RowImageView.swift */; };
 		1C69349B2D348584001D42D9 /* PlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C69349A2D34857F001D42D9 /* PlaceholderImageView.swift */; };
 		1C6934BD2D35D4F8001D42D9 /* AsyncCachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6934BC2D35D4F3001D42D9 /* AsyncCachedImage.swift */; };
+		1C6934BF2D35F9D6001D42D9 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6934BE2D35F9AD001D42D9 /* NetworkingServiceProtocol.swift */; };
+		1C6934C12D35FAA7001D42D9 /* MockNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6934C02D35FA9E001D42D9 /* MockNetworkingService.swift */; };
 		257B80032B13607F00930860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 257B80022B13607F00930860 /* Assets.xcassets */; };
 		257B80062B13607F00930860 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 257B80052B13607F00930860 /* Preview Assets.xcassets */; };
 		257B80102B13607F00930860 /* iOSTechTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257B800F2B13607F00930860 /* iOSTechTestTests.swift */; };
@@ -62,6 +64,8 @@
 		1C6934962D34736B001D42D9 /* RowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowImageView.swift; sourceTree = "<group>"; };
 		1C69349A2D34857F001D42D9 /* PlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderImageView.swift; sourceTree = "<group>"; };
 		1C6934BC2D35D4F3001D42D9 /* AsyncCachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCachedImage.swift; sourceTree = "<group>"; };
+		1C6934BE2D35F9AD001D42D9 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
+		1C6934C02D35FA9E001D42D9 /* MockNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkingService.swift; sourceTree = "<group>"; };
 		257B7FFB2B13607E00930860 /* iOSTechTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTechTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257B80022B13607F00930860 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		257B80052B13607F00930860 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		1C1BB5DB2D33791200562892 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1C6934C02D35FA9E001D42D9 /* MockNetworkingService.swift */,
+				1C6934BE2D35F9AD001D42D9 /* NetworkingServiceProtocol.swift */,
 				1C1BB5D92D33791200562892 /* NetworkingService.swift */,
 				1C1BB5DA2D33791200562892 /* PersistenceManager.swift */,
 			);
@@ -345,10 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1BB5E42D337A6500562892 /* BookInfo.swift in Sources */,
+				1C6934C12D35FAA7001D42D9 /* MockNetworkingService.swift in Sources */,
 				1C0E7A682D2F6EB300B604BB /* Main.xcdatamodeld in Sources */,
 				1C1BB5EA2D33961700562892 /* BooksResponse.swift in Sources */,
 				1C6934972D347370001D42D9 /* RowImageView.swift in Sources */,
 				1C1BB5E22D33792000562892 /* BookListView.swift in Sources */,
+				1C6934BF2D35F9D6001D42D9 /* NetworkingServiceProtocol.swift in Sources */,
 				1C0E7A742D2F777A00B604BB /* BookListViewModel.swift in Sources */,
 				1C6934BD2D35D4F8001D42D9 /* AsyncCachedImage.swift in Sources */,
 				1C1BB5D82D33790D00562892 /* iOSTechTestApp.swift in Sources */,

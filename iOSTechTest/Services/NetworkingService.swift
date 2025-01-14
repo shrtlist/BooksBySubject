@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-final class NetworkingService {
+final class NetworkingService: NetworkingServiceProtocol {
     // Shared singleton instance for convenience
     static let shared = NetworkingService()
     private let monitor = NWPathMonitor()
@@ -22,10 +22,10 @@ final class NetworkingService {
         monitor.cancel()
     }
 
-    // MARK: - APIs
+    // MARK: - NetworkingServiceProtocol conformance
 
     /// Fetch books for a given subject with pagination
-    func searchBySubject(_ subject: String, page: Int, limit: Int = 20) async throws -> [BookItem] {
+    func searchBySubject(_ subject: String, page: Int, limit: Int) async throws -> [BookItem] {
         let urlString = "https://openlibrary.org/subjects/\(subject).json?limit=\(limit)&offset=\(page * limit)"
 
         guard let url = URL(string: urlString) else {
@@ -77,8 +77,6 @@ final class NetworkingService {
             throw URLError(.cannotDecodeContentData)
         }
     }
-
-    // MARK: - Network Connectivity Check
 
     func isConnectedToNetwork() -> Bool {
         monitor.currentPath.status == .satisfied ? true : false
