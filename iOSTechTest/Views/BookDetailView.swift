@@ -21,7 +21,8 @@ struct BookDetailView: View {
                             .scaledToFit()
                             .frame(width: size, height: size)
                     } placeholder: {
-                        ProgressView() // Shows loading indicator until the image is downloaded
+                        Image(systemName: "book.fill")
+                            .imageScale(.large)
                     }
                 } else {
                     PlaceholderImageView(size: size)

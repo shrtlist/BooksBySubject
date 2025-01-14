@@ -22,7 +22,8 @@ struct RowImageView: View {
                     .frame(width: width, height: height)
                     .cornerRadius(cornerRadius)
             } placeholder: {
-                ProgressView() // Shows loading indicator until the image is downloaded
+                Image(systemName: "book.fill")
+                    .imageScale(.small)
             }
         } else {
             PlaceholderImageView(size: size)
