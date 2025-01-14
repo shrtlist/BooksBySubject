@@ -47,7 +47,6 @@ struct BookListView: View {
                 BookDetailView(bookInfo: bookInfo)
             }
             .searchable(text: $searchText)
-            .searchPresentationToolbarBehavior(.avoidHidingContent)
             .textInputAutocapitalization(.never)
             .onSubmit(of: .search) {
                 Task {
