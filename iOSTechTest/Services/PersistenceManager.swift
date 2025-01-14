@@ -54,6 +54,7 @@ final class PersistenceManager {
                 book.coverId = Int32(coverId)
             }
             book.timestamp = timestamp
+            book.subject = subject
         }
 
         saveContext()
@@ -71,6 +72,8 @@ final class PersistenceManager {
 
     func fetchCachedBooks(for subject: String) -> [Book] {
         let request: NSFetchRequest<Book> = Book.fetchRequest()
+        request.predicate = NSPredicate(format: "subject == %@", subject)
+
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         request.sortDescriptors = [sortDescriptor]
 

@@ -6,6 +6,7 @@
         <attribute name="coverId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firstPublishDate" optional="YES" attributeType="String"/>
         <attribute name="key" attributeType="String"/>
+        <attribute name="subject" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
         <uniquenessConstraints>
