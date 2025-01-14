@@ -6,12 +6,21 @@
 //
 
 import Foundation
+import Network
 
 final class NetworkingService {
     // Shared singleton instance for convenience
     static let shared = NetworkingService()
+    private let monitor = NWPathMonitor()
 
-    private init() {}
+    private init() {
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+    }
+
+    deinit {
+        monitor.cancel()
+    }
 
     // MARK: - APIs
 
@@ -67,5 +76,11 @@ final class NetworkingService {
         } catch {
             throw URLError(.cannotDecodeContentData)
         }
+    }
+
+    // MARK: - Network Connectivity Check
+
+    func isConnectedToNetwork() -> Bool {
+        monitor.currentPath.status == .satisfied ? true : false
     }
 }

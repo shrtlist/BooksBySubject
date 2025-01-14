@@ -37,7 +37,7 @@ final class BookListViewModel: ObservableObject {
         }
 
         // Fetch books from cache if offline
-        if !isConnectedToNetwork() {
+        if !NetworkingService.shared.isConnectedToNetwork() {
             loadCachedBooks(for: subject)
             return
         }
@@ -61,7 +61,7 @@ final class BookListViewModel: ObservableObject {
         var bookInfo: BookInfo?
 
         // Fetch book from cache if offline
-        if !isConnectedToNetwork() {
+        if !NetworkingService.shared.isConnectedToNetwork() {
             if let cachedBook = PersistenceManager.shared.fetchBookDetails(bookId: bookItem.key) {
                 bookInfo = BookInfo(
                     key: bookItem.key,
@@ -126,11 +126,5 @@ final class BookListViewModel: ObservableObject {
     // MARK: - Delete Expired Cache
     private func deleteExpiredCache() {
         PersistenceManager.shared.deleteExpiredCache()
-    }
-
-    // MARK: - Network Connectivity Check
-    private func isConnectedToNetwork() -> Bool {
-        // Placeholder for a real connectivity check
-        return true
     }
 }
