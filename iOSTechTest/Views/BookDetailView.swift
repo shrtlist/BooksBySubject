@@ -21,8 +21,7 @@ struct BookDetailView: View {
                             .scaledToFit()
                             .frame(width: size, height: size)
                     } placeholder: {
-                        Image(systemName: "book.fill")
-                            .imageScale(.large)
+                        PlaceholderImageView(size: size)
                     }
                 } else {
                     PlaceholderImageView(size: size)

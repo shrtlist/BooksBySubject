@@ -22,8 +22,7 @@ struct RowImageView: View {
                     .frame(width: width, height: height)
                     .cornerRadius(cornerRadius)
             } placeholder: {
-                Image(systemName: "book.fill")
-                    .imageScale(.medium)
+                PlaceholderImageView(size: size)
             }
         } else {
             PlaceholderImageView(size: size)
