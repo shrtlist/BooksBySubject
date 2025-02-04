@@ -1,7 +1,3 @@
-# Mobile Software Engineer Technical Test
-
-The test is a practical implementation test. First let's explain the project.
-
 ## Product Description
 
 This app displays a list of books from a given subject and the book details. The user can type a subject and the app will search for all the books that fall within the subject and list them down. Tapping on an item will open a new screen that shows the details of the book.
